@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+</head>
+<style>
+    body{
+        margin: 0%;
+        padding: 0%;
+        display: flex;
+        justify-content: center;
+        background:linear-gradient(red,blue);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position:absolute;
+        background-attachment: fixed;
+    }
+   
+    .class{
+        height: 250px;
+        width: 450px;
+        border:3px solid red;
+        border-radius: 80px;
+        text-align: center;
+        margin-top: 15%;
+        background:linear-gradient(red,blue);
+        
+    }
+    button{
+        background-color: #333333;
+        color: aliceblue;
+        border:black solid 2px;
+        border-radius: 6px;
+        
+    }
+</style>
+<body>
+
+    <div class="class">
+        <h1 id="comp">Computer : </h1>
+        <h1 id="play">Player : </h1>
+        <h1 id="res" >Result : Lets play</h1>
+        <button class="btn">ROCK</button>
+        <button class="btn">PAPER</button>
+        <button class="btn">SCISSOR</button>
+    </div>
+
+</body>
+</html>
+<script>
+    var comp=document.getElementById("comp");
+    var play=document.getElementById("play");
+    var res=document.getElementById("res");
+    var but=document.querySelectorAll(".btn");
+    let player;
+    let computer;
+    let result;
+    but.forEach(button => button.addEventListener("click",()=>{
+        player=button.textContent;
+        
+        play.textContent="Player : "+player;
+        compTurn();
+        comp.textContent= "Computer : "+computer ;  
+        res.textContent= "Result : "+chk();
+
+         
+    }));
+    function compTurn(){
+        var ran=Math.floor(Math.random()*3)+1;
+        switch(ran){
+            case 1: 
+            computer="ROCK";
+            break;
+            case 2: 
+            computer="PAPER";
+            break;
+            case 3: 
+            computer="SCISSOR";
+            break;
+
+        }
+
+    }
+    function chk(){
+        if (player==computer){
+            return "draw!";
+        }
+        else if(computer=="ROCK" && player=="SCISSOR"){
+            return "Computer wins!";
+        }
+        else if(computer=="ROCK" && player=="PAPER"){
+            return "player wins!";
+        }
+        else if(computer=="SCISSOR" && player=="ROCK"){
+            return "player wins!";
+        }
+        else if(computer=="SCISSOR" && player=="PAPER"){
+            return "Computer wins!";
+        }
+        else if(computer=="PAPER" && player=="SCISSOR"){
+            return "player wins!";
+        }
+        else if(computer=="PAPER" && player=="ROCK"){
+            return "Computer wins!";
+        }
+       
+    }
+   
+</script>
